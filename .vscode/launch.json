@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-PetClinicApplication<petclinic>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "org.springframework.samples.petclinic.PetClinicApplication",
+      "projectName": "spring-petclinic",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
