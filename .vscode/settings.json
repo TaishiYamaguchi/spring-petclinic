@@ -1,0 +1,5 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "spring-boot.ls.java.home": "",
+  "java.compile.nullAnalysis.mode": "automatic"
+}
