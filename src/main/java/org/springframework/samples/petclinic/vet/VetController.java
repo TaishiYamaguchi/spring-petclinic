@@ -41,6 +41,14 @@ class VetController {
 		this.vetRepository = vetRepository;
 	}
 
+	/**
+	 * 獣医一覧をページネーション付きで表示します。
+	 * 注: Object-XMLマッピングを簡素化するため、VetのコレクションではなくVets型を使用します。
+	 * 
+	 * @param page 表示するページ番号（デフォルト: 1）
+	 * @param model ビューにデータを渡すためのモデル
+	 * @return 獣医一覧のビュー名
+	 */
 	@GetMapping("/vets.html")
 	public String showVetList(@RequestParam(defaultValue = "1") int page, Model model) {
 		// Here we are returning an object of type 'Vets' rather than a collection of Vet
@@ -51,6 +59,14 @@ class VetController {
 		return addPaginationModel(page, paginated, model);
 	}
 
+	/**
+	 * ページネーション情報をモデルに追加します。
+	 * 
+	 * @param page 現在のページ番号
+	 * @param paginated ページング済みの獣医データ
+	 * @param model ビューにデータを渡すためのモデル
+	 * @return 獣医一覧のビュー名
+	 */
 	private String addPaginationModel(int page, Page<Vet> paginated, Model model) {
 		List<Vet> listVets = paginated.getContent();
 		model.addAttribute("currentPage", page);
@@ -60,12 +76,24 @@ class VetController {
 		return "vets/vetList";
 	}
 
+	/**
+	 * 獣医情報をページング処理して取得します。
+	 * 
+	 * @param page ページ番号（1から始まる）
+	 * @return ページング済みの獣医リスト
+	 */
 	private Page<Vet> findPaginated(int page) {
 		int pageSize = 5;
 		Pageable pageable = PageRequest.of(page - 1, pageSize);
 		return vetRepository.findAll(pageable);
 	}
 
+	/**
+	 * REST APIとして全獣医情報をJSON形式で返します。
+	 * 注: JSON/Objectマッピングを簡素化するため、VetのコレクションではなくVets型を使用します。
+	 * 
+	 * @return 全獣医情報を含むVetsオブジェクト
+	 */
 	@GetMapping({ "/vets" })
 	public @ResponseBody Vets showResourcesVetList() {
 		// Here we are returning an object of type 'Vets' rather than a collection of Vet

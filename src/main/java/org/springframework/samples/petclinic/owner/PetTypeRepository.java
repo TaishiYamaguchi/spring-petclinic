@@ -22,7 +22,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 /**
- * Repository class for <code>PetType</code> domain objects.
+ * PetTypeドメインオブジェクトのリポジトリインターフェース。
+ * ペットの種類情報をデータストアから取得します。
  *
  * @author Patrick Baumgartner
  */
@@ -30,8 +31,9 @@ import org.springframework.data.jpa.repository.Query;
 public interface PetTypeRepository extends JpaRepository<PetType, Integer> {
 
 	/**
-	 * Retrieve all {@link PetType}s from the data store.
-	 * @return a Collection of {@link PetType}s.
+	 * すべてのペットの種類を名前順に取得します。
+	 * 
+	 * @return ペットの種類のリスト
 	 */
 	@Query("SELECT ptype FROM PetType ptype ORDER BY ptype.name")
 	List<PetType> findPetTypes();

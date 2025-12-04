@@ -20,10 +20,10 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 /**
- * <code>Validator</code> for <code>Pet</code> forms.
+ * Petフォームのバリデーター。
  * <p>
- * We're not using Bean Validation annotations here because it is easier to define such
- * validation rule in Java.
+ * Javaでバリデーションルールを定義する方が簡単なため、
+ * Bean Validationアノテーションは使用していません。
  * </p>
  *
  * @author Ken Krebs
@@ -33,6 +33,13 @@ public class PetValidator implements Validator {
 
 	private static final String REQUIRED = "required";
 
+	/**
+	 * Petオブジェクトのバリデーションを実行します。
+	 * 名前、種類、生年月日が必須であることを検証します。
+	 * 
+	 * @param obj 検証するオブジェクト（Petインスタンス）
+	 * @param errors バリデーションエラーを格納するErrorsオブジェクト
+	 */
 	@Override
 	public void validate(Object obj, Errors errors) {
 		Pet pet = (Pet) obj;
@@ -54,7 +61,10 @@ public class PetValidator implements Validator {
 	}
 
 	/**
-	 * This Validator validates *just* Pet instances
+	 * このバリデーターがPetインスタンスのみを検証するかどうかを判定します。
+	 * 
+	 * @param clazz チェックするクラス
+	 * @return Petクラスまたはそのサブクラスの場合はtrue
 	 */
 	@Override
 	public boolean supports(Class<?> clazz) {

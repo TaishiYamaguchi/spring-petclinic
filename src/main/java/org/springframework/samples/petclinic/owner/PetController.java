@@ -58,11 +58,23 @@ class PetController {
 		this.types = types;
 	}
 
+	/**
+	 * ペットの種類一覧をモデルに追加します。
+	 * 
+	 * @return ペットの種類のコレクション
+	 */
 	@ModelAttribute("types")
 	public Collection<PetType> populatePetTypes() {
 		return this.types.findPetTypes();
 	}
 
+	/**
+	 * オーナーIDからオーナー情報を取得します。
+	 * 
+	 * @param ownerId オーナーID
+	 * @return オーナーオブジェクト
+	 * @throws IllegalArgumentException 指定されたIDのオーナーが見つからない場合
+	 */
 	@ModelAttribute("owner")
 	public Owner findOwner(@PathVariable("ownerId") int ownerId) {
 		Optional<Owner> optionalOwner = this.owners.findById(ownerId);
@@ -71,6 +83,15 @@ class PetController {
 		return owner;
 	}
 
+	/**
+	 * ペットIDからペット情報を取得します。
+	 * IDが指定されていない場合は新しいペットオブジェクトを返します。
+	 * 
+	 * @param ownerId オーナーID
+	 * @param petId ペットID（オプション）
+	 * @return ペットオブジェクト
+	 * @throws IllegalArgumentException 指定されたIDのオーナーが見つからない場合
+	 */
 	@ModelAttribute("pet")
 	public Pet findPet(@PathVariable("ownerId") int ownerId,
 			@PathVariable(name = "petId", required = false) Integer petId) {
@@ -85,16 +106,35 @@ class PetController {
 		return owner.getPet(petId);
 	}
 
+	/**
+	 * オーナー用のデータバインダーを初期化します。
+	 * セキュリティ上の理由から、idフィールドのバインディングを禁止します。
+	 * 
+	 * @param dataBinder Webデータバインダー
+	 */
 	@InitBinder("owner")
 	public void initOwnerBinder(WebDataBinder dataBinder) {
 		dataBinder.setDisallowedFields("id");
 	}
 
+	/**
+	 * ペット用のデータバインダーを初期化します。
+	 * カスタムバリデーターを設定します。
+	 * 
+	 * @param dataBinder Webデータバインダー
+	 */
 	@InitBinder("pet")
 	public void initPetBinder(WebDataBinder dataBinder) {
 		dataBinder.setValidator(new PetValidator());
 	}
 
+	/**
+	 * ペット新規作成フォームを表示します。
+	 * 
+	 * @param owner オーナーオブジェクト
+	 * @param model ビューにデータを渡すためのモデル
+	 * @return ペット作成・更新フォームのビュー名
+	 */
 	@GetMapping("/pets/new")
 	public String initCreationForm(Owner owner, ModelMap model) {
 		Pet pet = new Pet();
@@ -102,6 +142,16 @@ class PetController {
 		return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
 	}
 
+	/**
+	 * 新しいペットを作成するフォームの送信を処理します。
+	 * 名前の重複チェックと生年月日のバリデーションを行います。
+	 * 
+	 * @param owner オーナーオブジェクト
+	 * @param pet 作成するペットオブジェクト
+	 * @param result バリデーション結果
+	 * @param redirectAttributes フラッシュメッセージを渡すためのリダイレクト属性
+	 * @return 処理後にリダイレクトするビュー名
+	 */
 	@PostMapping("/pets/new")
 	public String processCreationForm(Owner owner, @Valid Pet pet, BindingResult result,
 			RedirectAttributes redirectAttributes) {
@@ -124,11 +174,26 @@ class PetController {
 		return "redirect:/owners/{ownerId}";
 	}
 
+	/**
+	 * ペット編集フォームを表示します。
+	 * 
+	 * @return ペット作成・更新フォームのビュー名
+	 */
 	@GetMapping("/pets/{petId}/edit")
 	public String initUpdateForm() {
 		return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
 	}
 
+	/**
+	 * ペット更新フォームの送信を処理します。
+	 * 名前の重複チェックと生年月日のバリデーションを行います。
+	 * 
+	 * @param owner オーナーオブジェクト
+	 * @param pet 更新するペットオブジェクト
+	 * @param result バリデーション結果
+	 * @param redirectAttributes フラッシュメッセージを渡すためのリダイレクト属性
+	 * @return 処理後にリダイレクトするビュー名
+	 */
 	@PostMapping("/pets/{petId}/edit")
 	public String processUpdateForm(Owner owner, @Valid Pet pet, BindingResult result,
 			RedirectAttributes redirectAttributes) {
@@ -158,9 +223,11 @@ class PetController {
 	}
 
 	/**
-	 * Updates the pet details if it exists or adds a new pet to the owner.
-	 * @param owner The owner of the pet
-	 * @param pet The pet with updated details
+	 * ペットの詳細情報を更新します。
+	 * 既存のペットがあれば更新し、なければ新規追加します。
+	 * 
+	 * @param owner ペットの飼い主
+	 * @param pet 更新するペット情報
 	 */
 	private void updatePetDetails(Owner owner, Pet pet) {
 		Integer id = pet.getId();

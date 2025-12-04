@@ -35,7 +35,8 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.NotBlank;
 
 /**
- * Simple JavaBean domain object representing an owner.
+ * ペットの飼い主（オーナー）を表すドメインオブジェクト。
+ * 住所、都市、電話番号、および複数のペット情報を保持します。
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -66,34 +67,75 @@ public class Owner extends Person {
 	@OrderBy("name")
 	private final List<Pet> pets = new ArrayList<>();
 
+	/**
+	 * 住所を取得します。
+	 * 
+	 * @return 住所
+	 */
 	public String getAddress() {
 		return this.address;
 	}
 
+	/**
+	 * 住所を設定します。
+	 * 
+	 * @param address 住所
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
+	/**
+	 * 都市名を取得します。
+	 * 
+	 * @return 都市名
+	 */
 	public String getCity() {
 		return this.city;
 	}
 
+	/**
+	 * 都市名を設定します。
+	 * 
+	 * @param city 都市名
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
+	/**
+	 * 電話番号を取得します。
+	 * 
+	 * @return 電話番号
+	 */
 	public String getTelephone() {
 		return this.telephone;
 	}
 
+	/**
+	 * 電話番号を設定します。
+	 * 
+	 * @param telephone 電話番号（10桁の数字）
+	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
+	/**
+	 * このオーナーが所有するペットのリストを取得します。
+	 * 
+	 * @return ペットのリスト
+	 */
 	public List<Pet> getPets() {
 		return this.pets;
 	}
 
+	/**
+	 * 新しいペットをこのオーナーに追加します。
+	 * 新規ペット（IDが未設定）の場合のみ追加します。
+	 * 
+	 * @param pet 追加するペット
+	 */
 	public void addPet(Pet pet) {
 		if (pet.isNew()) {
 			getPets().add(pet);
@@ -101,18 +143,22 @@ public class Owner extends Person {
 	}
 
 	/**
-	 * Return the Pet with the given name, or null if none found for this Owner.
-	 * @param name to test
-	 * @return the Pet with the given name, or null if no such Pet exists for this Owner
+	 * 指定された名前のペットを返します。
+	 * 見つからない場合はnullを返します。
+	 * 
+	 * @param name 検索するペットの名前
+	 * @return 指定された名前のペット、またはnull
 	 */
 	public Pet getPet(String name) {
 		return getPet(name, false);
 	}
 
 	/**
-	 * Return the Pet with the given id, or null if none found for this Owner.
-	 * @param id to test
-	 * @return the Pet with the given id, or null if no such Pet exists for this Owner
+	 * 指定されたIDのペットを返します。
+	 * 見つからない場合はnullを返します。
+	 * 
+	 * @param id 検索するペットのID
+	 * @return 指定されたIDのペット、またはnull
 	 */
 	public Pet getPet(Integer id) {
 		for (Pet pet : getPets()) {
@@ -127,10 +173,12 @@ public class Owner extends Person {
 	}
 
 	/**
-	 * Return the Pet with the given name, or null if none found for this Owner.
-	 * @param name to test
-	 * @param ignoreNew whether to ignore new pets (pets that are not saved yet)
-	 * @return the Pet with the given name, or null if no such Pet exists for this Owner
+	 * 指定された名前のペットを返します。
+	 * 見つからない場合はnullを返します。
+	 * 
+	 * @param name 検索するペットの名前
+	 * @param ignoreNew 新規ペット（まだ保存されていないペット）を無視するかどうか
+	 * @return 指定された名前のペット、またはnull
 	 */
 	public Pet getPet(String name, boolean ignoreNew) {
 		for (Pet pet : getPets()) {
@@ -157,9 +205,11 @@ public class Owner extends Person {
 	}
 
 	/**
-	 * Adds the given {@link Visit} to the {@link Pet} with the given identifier.
-	 * @param petId the identifier of the {@link Pet}, must not be {@literal null}.
-	 * @param visit the visit to add, must not be {@literal null}.
+	 * 指定されたペットに診察記録を追加します。
+	 * 
+	 * @param petId ペットの識別子、null不可
+	 * @param visit 追加する診察記録、null不可
+	 * @throws IllegalArgumentException petIdまたはvisitがnullの場合、または無効なペットIDの場合
 	 */
 	public void addVisit(Integer petId, Visit visit) {
 

@@ -21,7 +21,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 /**
- * @author Juergen Hoeller Can be Cat, Dog, Hamster...
+ * ペットの種類を表すドメインオブジェクト。
+ * 例: 猫、犬、ハムスターなど。
+ * 
+ * @author Juergen Hoeller
  */
 @Entity
 @Table(name = "types")

@@ -22,8 +22,20 @@ import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.model.Person;
 import org.springframework.samples.petclinic.vet.Vet;
 
+/**
+ * Spring Native用のランタイムヒントを登録します。
+ * リソースファイルやシリアライゼーションが必要なクラスを指定します。
+ */
 public class PetClinicRuntimeHints implements RuntimeHintsRegistrar {
 
+	/**
+	 * アプリケーションのランタイムヒントを登録します。
+	 * データベーススクリプト、メッセージファイル、設定ファイルなどのリソースと、
+	 * シリアライズが必要なエンティティクラスを登録します。
+	 * 
+	 * @param hints ランタイムヒントの登録先
+	 * @param classLoader クラスローダー
+	 */
 	@Override
 	public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
 		hints.resources().registerPattern("db/*"); // https://github.com/spring-projects/spring-boot/issues/32654
