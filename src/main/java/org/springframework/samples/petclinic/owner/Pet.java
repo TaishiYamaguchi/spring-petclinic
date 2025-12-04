@@ -34,8 +34,7 @@ import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 
 /**
- * ペットを表すドメインオブジェクト。
- * 名前、生年月日、種類、および診察記録の履歴を保持します。
+ * ペットを表すドメインオブジェクト。 名前、生年月日、種類、および診察記録の履歴を保持します。
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -61,7 +60,6 @@ public class Pet extends NamedEntity {
 
 	/**
 	 * 生年月日を設定します。
-	 * 
 	 * @param birthDate 生年月日
 	 */
 	public void setBirthDate(LocalDate birthDate) {
@@ -70,7 +68,6 @@ public class Pet extends NamedEntity {
 
 	/**
 	 * 生年月日を取得します。
-	 * 
 	 * @return 生年月日
 	 */
 	public LocalDate getBirthDate() {
@@ -79,7 +76,6 @@ public class Pet extends NamedEntity {
 
 	/**
 	 * ペットの種類を取得します。
-	 * 
 	 * @return ペットの種類（例: 猫、犬、ハムスターなど）
 	 */
 	public PetType getType() {
@@ -88,7 +84,6 @@ public class Pet extends NamedEntity {
 
 	/**
 	 * ペットの種類を設定します。
-	 * 
 	 * @param type ペットの種類
 	 */
 	public void setType(PetType type) {
@@ -97,7 +92,6 @@ public class Pet extends NamedEntity {
 
 	/**
 	 * このペットの診察記録一覧を取得します。
-	 * 
 	 * @return 診察記録のコレクション
 	 */
 	public Collection<Visit> getVisits() {
@@ -106,7 +100,6 @@ public class Pet extends NamedEntity {
 
 	/**
 	 * このペットに診察記録を追加します。
-	 * 
 	 * @param visit 追加する診察記録
 	 */
 	public void addVisit(Visit visit) {

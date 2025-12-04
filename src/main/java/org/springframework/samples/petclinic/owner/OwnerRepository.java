@@ -22,10 +22,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Ownerドメインオブジェクトのリポジトリインターフェース。
- * すべてのメソッド名はSpring Dataの命名規則に準拠しているため、
- * このインターフェースはSpring Dataで簡単に拡張できます。
- * 参照: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
+ * Ownerドメインオブジェクトのリポジトリインターフェース。 すべてのメソッド名はSpring Dataの命名規則に準拠しているため、 このインターフェースはSpring
+ * Dataで簡単に拡張できます。 参照:
+ * https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -36,9 +35,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface OwnerRepository extends JpaRepository<Owner, Integer> {
 
 	/**
-	 * 姓でオーナーを検索します。
-	 * 指定された文字列で<i>始まる</i>姓を持つすべてのオーナーを返します。
-	 * 
+	 * 姓でオーナーを検索します。 指定された文字列で<i>始まる</i>姓を持つすべてのオーナーを返します。
 	 * @param lastName 検索する姓（前方一致）
 	 * @param pageable ページング情報
 	 * @return 一致するオーナーのページ（見つからない場合は空のページ）
@@ -48,10 +45,8 @@ public interface OwnerRepository extends JpaRepository<Owner, Integer> {
 	/**
 	 * IDでオーナーを検索します。
 	 * <p>
-	 * このメソッドは、見つかった場合はOwnerを含むOptionalを返します。
-	 * 指定されたIDのOwnerが見つからない場合は、空のOptionalを返します。
+	 * このメソッドは、見つかった場合はOwnerを含むOptionalを返します。 指定されたIDのOwnerが見つからない場合は、空のOptionalを返します。
 	 * </p>
-	 * 
 	 * @param id 検索するID
 	 * @return Ownerを含むOptional、または空のOptional
 	 * @throws IllegalArgumentException IDがnullの場合

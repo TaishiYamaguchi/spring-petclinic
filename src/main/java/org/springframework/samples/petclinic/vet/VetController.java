@@ -42,9 +42,7 @@ class VetController {
 	}
 
 	/**
-	 * 獣医一覧をページネーション付きで表示します。
-	 * 注: Object-XMLマッピングを簡素化するため、VetのコレクションではなくVets型を使用します。
-	 * 
+	 * 獣医一覧をページネーション付きで表示します。 注: Object-XMLマッピングを簡素化するため、VetのコレクションではなくVets型を使用します。
 	 * @param page 表示するページ番号（デフォルト: 1）
 	 * @param model ビューにデータを渡すためのモデル
 	 * @return 獣医一覧のビュー名
@@ -61,7 +59,6 @@ class VetController {
 
 	/**
 	 * ページネーション情報をモデルに追加します。
-	 * 
 	 * @param page 現在のページ番号
 	 * @param paginated ページング済みの獣医データ
 	 * @param model ビューにデータを渡すためのモデル
@@ -78,7 +75,6 @@ class VetController {
 
 	/**
 	 * 獣医情報をページング処理して取得します。
-	 * 
 	 * @param page ページ番号（1から始まる）
 	 * @return ページング済みの獣医リスト
 	 */
@@ -89,9 +85,8 @@ class VetController {
 	}
 
 	/**
-	 * REST APIとして全獣医情報をJSON形式で返します。
-	 * 注: JSON/Objectマッピングを簡素化するため、VetのコレクションではなくVets型を使用します。
-	 * 
+	 * REST APIとして全獣医情報をJSON形式で返します。 注:
+	 * JSON/Objectマッピングを簡素化するため、VetのコレクションではなくVets型を使用します。
 	 * @return 全獣医情報を含むVetsオブジェクト
 	 */
 	@GetMapping({ "/vets" })

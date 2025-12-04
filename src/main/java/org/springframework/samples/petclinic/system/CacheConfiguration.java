@@ -24,9 +24,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.cache.configuration.MutableConfiguration;
 
 /**
- * JCache APIを提供するキャッシュの設定。
- * アプリケーションで使用するキャッシュを作成し、
- * JMX経由でアクセス可能な統計情報を有効化します。
+ * JCache APIを提供するキャッシュの設定。 アプリケーションで使用するキャッシュを作成し、 JMX経由でアクセス可能な統計情報を有効化します。
  */
 @Configuration(proxyBeanMethods = false)
 @EnableCaching
@@ -34,7 +32,6 @@ class CacheConfiguration {
 
 	/**
 	 * 獣医情報用のキャッシュを作成するカスタマイザー。
-	 * 
 	 * @return JCacheマネージャーカスタマイザー
 	 */
 	@Bean
@@ -45,11 +42,8 @@ class CacheConfiguration {
 	/**
 	 * JCacheプログラム設定API経由で統計情報を有効化するシンプルな設定を作成します。
 	 * <p>
-	 * JCache API標準によって提供される設定オブジェクト内では、
-	 * 非常に限られた設定オプションしかありません。
-	 * 本当に関連する設定オプション（サイズ制限など）は、
+	 * JCache API標準によって提供される設定オブジェクト内では、 非常に限られた設定オプションしかありません。 本当に関連する設定オプション（サイズ制限など）は、
 	 * 選択したJCache実装が提供する設定メカニズム経由で設定する必要があります。
-	 * 
 	 * @return キャッシュ設定
 	 */
 	private javax.cache.configuration.Configuration<Object, Object> cacheConfiguration() {

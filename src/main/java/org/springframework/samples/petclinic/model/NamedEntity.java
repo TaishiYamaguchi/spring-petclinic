@@ -20,8 +20,7 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotBlank;
 
 /**
- * BaseEntityに名前プロパティを追加したシンプルなドメインオブジェクト。
- * 名前が必要なオブジェクトの基底クラスとして使用されます。
+ * BaseEntityに名前プロパティを追加したシンプルなドメインオブジェクト。 名前が必要なオブジェクトの基底クラスとして使用されます。
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -36,7 +35,6 @@ public class NamedEntity extends BaseEntity {
 
 	/**
 	 * 名前を取得します。
-	 * 
 	 * @return 名前
 	 */
 	public String getName() {
@@ -45,7 +43,6 @@ public class NamedEntity extends BaseEntity {
 
 	/**
 	 * 名前を設定します。
-	 * 
 	 * @param name 名前
 	 */
 	public void setName(String name) {

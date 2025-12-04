@@ -23,8 +23,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 /**
- * IDプロパティを持つシンプルなドメインオブジェクト。
- * IDが必要なオブジェクトの基底クラスとして使用されます。
+ * IDプロパティを持つシンプルなドメインオブジェクト。 IDが必要なオブジェクトの基底クラスとして使用されます。
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -38,7 +37,6 @@ public class BaseEntity implements Serializable {
 
 	/**
 	 * エンティティのIDを取得します。
-	 * 
 	 * @return エンティティのID
 	 */
 	public Integer getId() {
@@ -47,7 +45,6 @@ public class BaseEntity implements Serializable {
 
 	/**
 	 * エンティティのIDを設定します。
-	 * 
 	 * @param id エンティティのID
 	 */
 	public void setId(Integer id) {
@@ -56,7 +53,6 @@ public class BaseEntity implements Serializable {
 
 	/**
 	 * このエンティティが新規（まだ永続化されていない）かどうかを判定します。
-	 * 
 	 * @return IDがnullの場合はtrue、それ以外はfalse
 	 */
 	public boolean isNew() {

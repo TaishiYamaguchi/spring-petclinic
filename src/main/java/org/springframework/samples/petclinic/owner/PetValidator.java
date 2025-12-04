@@ -22,8 +22,7 @@ import org.springframework.validation.Validator;
 /**
  * Petフォームのバリデーター。
  * <p>
- * Javaでバリデーションルールを定義する方が簡単なため、
- * Bean Validationアノテーションは使用していません。
+ * Javaでバリデーションルールを定義する方が簡単なため、 Bean Validationアノテーションは使用していません。
  * </p>
  *
  * @author Ken Krebs
@@ -34,9 +33,7 @@ public class PetValidator implements Validator {
 	private static final String REQUIRED = "required";
 
 	/**
-	 * Petオブジェクトのバリデーションを実行します。
-	 * 名前、種類、生年月日が必須であることを検証します。
-	 * 
+	 * Petオブジェクトのバリデーションを実行します。 名前、種類、生年月日が必須であることを検証します。
 	 * @param obj 検証するオブジェクト（Petインスタンス）
 	 * @param errors バリデーションエラーを格納するErrorsオブジェクト
 	 */
@@ -62,7 +59,6 @@ public class PetValidator implements Validator {
 
 	/**
 	 * このバリデーターがPetインスタンスのみを検証するかどうかを判定します。
-	 * 
 	 * @param clazz チェックするクラス
 	 * @return Petクラスまたはそのサブクラスの場合はtrue
 	 */

@@ -22,8 +22,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 /**
- * 獣医のリストを表すシンプルなドメインオブジェクト。
- * 主にXML/JSONマーシャリングビューで使用されます。
+ * 獣医のリストを表すシンプルなドメインオブジェクト。 主にXML/JSONマーシャリングビューで使用されます。
  *
  * @author Arjen Poutsma
  */
@@ -33,9 +32,7 @@ public class Vets {
 	private List<Vet> vets;
 
 	/**
-	 * 獣医のリストを取得します。
-	 * 初期化されていない場合は新しいArrayListを作成します。
-	 * 
+	 * 獣医のリストを取得します。 初期化されていない場合は新しいArrayListを作成します。
 	 * @return 獣医のリスト
 	 */
 	@XmlElement

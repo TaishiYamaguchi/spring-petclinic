@@ -24,7 +24,6 @@ class WelcomeController {
 
 	/**
 	 * アプリケーションのウェルカムページを表示します。
-	 * 
 	 * @return ウェルカムページのビュー名
 	 */
 	@GetMapping("/")

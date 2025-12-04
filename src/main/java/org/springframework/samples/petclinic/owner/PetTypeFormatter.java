@@ -24,9 +24,8 @@ import java.util.Locale;
 import java.util.Objects;
 
 /**
- * PetType型の要素を解析および出力する方法をSpring MVCに指示します。
- * Spring 3.0以降、FormatterはレガシーPropertyEditorと比較して改善されました。
- * 詳細は以下を参照:
+ * PetType型の要素を解析および出力する方法をSpring MVCに指示します。 Spring
+ * 3.0以降、FormatterはレガシーPropertyEditorと比較して改善されました。 詳細は以下を参照:
  * https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#format
  *
  * @author Mark Fisher
@@ -44,7 +43,6 @@ public class PetTypeFormatter implements Formatter<PetType> {
 
 	/**
 	 * PetTypeを文字列表現に変換します。
-	 * 
 	 * @param petType 変換するペットの種類
 	 * @param locale ロケール
 	 * @return ペットの種類の名前、または"<null>"
@@ -57,7 +55,6 @@ public class PetTypeFormatter implements Formatter<PetType> {
 
 	/**
 	 * 文字列をPetTypeオブジェクトに解析します。
-	 * 
 	 * @param text 解析する文字列
 	 * @param locale ロケール
 	 * @return 一致するPetType
