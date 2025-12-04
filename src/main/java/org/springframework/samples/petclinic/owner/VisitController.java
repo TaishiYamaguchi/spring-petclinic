@@ -48,9 +48,7 @@ class VisitController {
 	}
 
 	/**
-	 * データバインダーの設定を行います。
-	 * セキュリティ上の理由から、idフィールドのバインディングを禁止します。
-	 * 
+	 * データバインダーの設定を行います。 セキュリティ上の理由から、idフィールドのバインディングを禁止します。
 	 * @param dataBinder Webデータバインダー
 	 */
 	@InitBinder
@@ -59,10 +57,8 @@ class VisitController {
 	}
 
 	/**
-	 * 各@RequestMappingメソッドの前に呼ばれます。
-	 * 目的: 常に最新のデータを保証し、セッションスコープを使用しないため
+	 * 各@RequestMappingメソッドの前に呼ばれます。 目的: 常に最新のデータを保証し、セッションスコープを使用しないため
 	 * Petオブジェクトが必ずidを持つことを保証します。
-	 * 
 	 * @param ownerId オーナーID
 	 * @param petId ペットID
 	 * @param model ビューに渡すモデルデータ
@@ -90,9 +86,7 @@ class VisitController {
 	}
 
 	/**
-	 * 新しい診察記録の作成フォームを表示します。
-	 * 注: Spring MVCはloadPetWithVisit(...)メソッドを先に呼び出します。
-	 * 
+	 * 新しい診察記録の作成フォームを表示します。 注: Spring MVCはloadPetWithVisit(...)メソッドを先に呼び出します。
 	 * @return 診察記録作成・更新フォームのビュー名
 	 */
 	@GetMapping("/owners/{ownerId}/pets/{petId}/visits/new")
@@ -101,9 +95,7 @@ class VisitController {
 	}
 
 	/**
-	 * 新しい診察記録の作成フォームの送信を処理します。
-	 * 注: Spring MVCはloadPetWithVisit(...)メソッドを先に呼び出します。
-	 * 
+	 * 新しい診察記録の作成フォームの送信を処理します。 注: Spring MVCはloadPetWithVisit(...)メソッドを先に呼び出します。
 	 * @param owner オーナーオブジェクト
 	 * @param petId ペットID
 	 * @param visit 登録する診察記録

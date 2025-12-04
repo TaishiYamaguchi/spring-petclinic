@@ -26,8 +26,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 /**
- * ペットの診察記録を表すドメインオブジェクト。
- * 診察日と診察内容の説明を保持します。
+ * ペットの診察記録を表すドメインオブジェクト。 診察日と診察内容の説明を保持します。
  *
  * @author Ken Krebs
  * @author Dave Syer
@@ -52,7 +51,6 @@ public class Visit extends BaseEntity {
 
 	/**
 	 * 診察日を取得します。
-	 * 
 	 * @return 診察日
 	 */
 	public LocalDate getDate() {
@@ -61,7 +59,6 @@ public class Visit extends BaseEntity {
 
 	/**
 	 * 診察日を設定します。
-	 * 
 	 * @param date 診察日
 	 */
 	public void setDate(LocalDate date) {
@@ -70,7 +67,6 @@ public class Visit extends BaseEntity {
 
 	/**
 	 * 診察内容の説明を取得します。
-	 * 
 	 * @return 診察内容の説明
 	 */
 	public String getDescription() {
@@ -79,7 +75,6 @@ public class Visit extends BaseEntity {
 
 	/**
 	 * 診察内容の説明を設定します。
-	 * 
 	 * @param description 診察内容の説明
 	 */
 	public void setDescription(String description) {

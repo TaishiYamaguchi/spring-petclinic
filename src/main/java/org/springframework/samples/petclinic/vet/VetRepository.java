@@ -25,10 +25,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 
 /**
- * Vetドメインオブジェクトのリポジトリインターフェース。
- * すべてのメソッド名はSpring Dataの命名規則に準拠しているため、
- * このインターフェースはSpring Dataで簡単に拡張できます。
- * 参照: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
+ * Vetドメインオブジェクトのリポジトリインターフェース。 すべてのメソッド名はSpring Dataの命名規則に準拠しているため、 このインターフェースはSpring
+ * Dataで簡単に拡張できます。 参照:
+ * https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -38,9 +37,7 @@ import java.util.Collection;
 public interface VetRepository extends Repository<Vet, Integer> {
 
 	/**
-	 * すべての獣医をデータストアから取得します。
-	 * 結果はキャッシュされます。
-	 * 
+	 * すべての獣医をデータストアから取得します。 結果はキャッシュされます。
 	 * @return 獣医のコレクション
 	 * @throws DataAccessException データアクセスエラーが発生した場合
 	 */
@@ -49,9 +46,7 @@ public interface VetRepository extends Repository<Vet, Integer> {
 	Collection<Vet> findAll() throws DataAccessException;
 
 	/**
-	 * すべての獣医をページングしてデータストアから取得します。
-	 * 結果はキャッシュされます。
-	 * 
+	 * すべての獣医をページングしてデータストアから取得します。 結果はキャッシュされます。
 	 * @param pageable ページング情報
 	 * @return 獣医のページ
 	 * @throws DataAccessException データアクセスエラーが発生した場合

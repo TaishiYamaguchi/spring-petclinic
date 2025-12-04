@@ -14,8 +14,7 @@ import java.util.Locale;
  * アプリケーションの国際化（i18n）サポートを設定します。
  *
  * <p>
- * 言語固有のメッセージの読み込み、ユーザーの言語追跡、
- * URLパラメータ経由の言語変更（例: <code>?lang=de</code>）を処理します。
+ * 言語固有のメッセージの読み込み、ユーザーの言語追跡、 URLパラメータ経由の言語変更（例: <code>?lang=de</code>）を処理します。
  * </p>
  *
  * @author Anuj Ashok Potdar
@@ -25,9 +24,7 @@ import java.util.Locale;
 public class WebConfiguration implements WebMvcConfigurer {
 
 	/**
-	 * リクエスト間でユーザーの言語設定を記憶するためにセッションストレージを使用します。
-	 * 何も指定されていない場合は英語がデフォルトになります。
-	 * 
+	 * リクエスト間でユーザーの言語設定を記憶するためにセッションストレージを使用します。 何も指定されていない場合は英語がデフォルトになります。
 	 * @return セッションベースのLocaleResolver
 	 */
 	@Bean
@@ -39,7 +36,6 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 	/**
 	 * <code>?lang=es</code>のようなURLパラメータを使用して言語を切り替えることを可能にします。
-	 * 
 	 * @return 言語変更を処理するLocaleChangeInterceptor
 	 */
 	@Bean
@@ -51,7 +47,6 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 	/**
 	 * 各リクエストで実行されるようにロケール変更インターセプターを登録します。
-	 * 
 	 * @param registry インターセプターを追加するレジストリ
 	 */
 	@Override

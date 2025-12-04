@@ -20,8 +20,7 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotBlank;
 
 /**
- * 人物を表すシンプルなドメインオブジェクト。
- * 名前（姓と名）を保持します。
+ * 人物を表すシンプルなドメインオブジェクト。 名前（姓と名）を保持します。
  *
  * @author Ken Krebs
  */
@@ -38,7 +37,6 @@ public class Person extends BaseEntity {
 
 	/**
 	 * 名を取得します。
-	 * 
 	 * @return 名
 	 */
 	public String getFirstName() {
@@ -47,7 +45,6 @@ public class Person extends BaseEntity {
 
 	/**
 	 * 名を設定します。
-	 * 
 	 * @param firstName 名
 	 */
 	public void setFirstName(String firstName) {
@@ -56,7 +53,6 @@ public class Person extends BaseEntity {
 
 	/**
 	 * 姓を取得します。
-	 * 
 	 * @return 姓
 	 */
 	public String getLastName() {
@@ -65,7 +61,6 @@ public class Person extends BaseEntity {
 
 	/**
 	 * 姓を設定します。
-	 * 
 	 * @param lastName 姓
 	 */
 	public void setLastName(String lastName) {

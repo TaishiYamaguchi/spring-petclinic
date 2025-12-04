@@ -21,8 +21,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportRuntimeHints;
 
 /**
- * PetClinic Spring Bootアプリケーションのメインクラス。
- * アプリケーションのエントリーポイントです。
+ * PetClinic Spring Bootアプリケーションのメインクラス。 アプリケーションのエントリーポイントです。
  *
  * @author Dave Syer
  */
@@ -32,7 +31,6 @@ public class PetClinicApplication {
 
 	/**
 	 * アプリケーションのエントリーポイント。
-	 * 
 	 * @param args コマンドライン引数
 	 */
 	public static void main(String[] args) {

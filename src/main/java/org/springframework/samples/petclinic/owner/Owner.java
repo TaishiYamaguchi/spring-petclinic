@@ -35,8 +35,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.NotBlank;
 
 /**
- * ペットの飼い主（オーナー）を表すドメインオブジェクト。
- * 住所、都市、電話番号、および複数のペット情報を保持します。
+ * ペットの飼い主（オーナー）を表すドメインオブジェクト。 住所、都市、電話番号、および複数のペット情報を保持します。
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -69,7 +68,6 @@ public class Owner extends Person {
 
 	/**
 	 * 住所を取得します。
-	 * 
 	 * @return 住所
 	 */
 	public String getAddress() {
@@ -78,7 +76,6 @@ public class Owner extends Person {
 
 	/**
 	 * 住所を設定します。
-	 * 
 	 * @param address 住所
 	 */
 	public void setAddress(String address) {
@@ -87,7 +84,6 @@ public class Owner extends Person {
 
 	/**
 	 * 都市名を取得します。
-	 * 
 	 * @return 都市名
 	 */
 	public String getCity() {
@@ -96,7 +92,6 @@ public class Owner extends Person {
 
 	/**
 	 * 都市名を設定します。
-	 * 
 	 * @param city 都市名
 	 */
 	public void setCity(String city) {
@@ -105,7 +100,6 @@ public class Owner extends Person {
 
 	/**
 	 * 電話番号を取得します。
-	 * 
 	 * @return 電話番号
 	 */
 	public String getTelephone() {
@@ -114,7 +108,6 @@ public class Owner extends Person {
 
 	/**
 	 * 電話番号を設定します。
-	 * 
 	 * @param telephone 電話番号（10桁の数字）
 	 */
 	public void setTelephone(String telephone) {
@@ -123,7 +116,6 @@ public class Owner extends Person {
 
 	/**
 	 * このオーナーが所有するペットのリストを取得します。
-	 * 
 	 * @return ペットのリスト
 	 */
 	public List<Pet> getPets() {
@@ -131,9 +123,7 @@ public class Owner extends Person {
 	}
 
 	/**
-	 * 新しいペットをこのオーナーに追加します。
-	 * 新規ペット（IDが未設定）の場合のみ追加します。
-	 * 
+	 * 新しいペットをこのオーナーに追加します。 新規ペット（IDが未設定）の場合のみ追加します。
 	 * @param pet 追加するペット
 	 */
 	public void addPet(Pet pet) {
@@ -143,9 +133,7 @@ public class Owner extends Person {
 	}
 
 	/**
-	 * 指定された名前のペットを返します。
-	 * 見つからない場合はnullを返します。
-	 * 
+	 * 指定された名前のペットを返します。 見つからない場合はnullを返します。
 	 * @param name 検索するペットの名前
 	 * @return 指定された名前のペット、またはnull
 	 */
@@ -154,9 +142,7 @@ public class Owner extends Person {
 	}
 
 	/**
-	 * 指定されたIDのペットを返します。
-	 * 見つからない場合はnullを返します。
-	 * 
+	 * 指定されたIDのペットを返します。 見つからない場合はnullを返します。
 	 * @param id 検索するペットのID
 	 * @return 指定されたIDのペット、またはnull
 	 */
@@ -173,9 +159,7 @@ public class Owner extends Person {
 	}
 
 	/**
-	 * 指定された名前のペットを返します。
-	 * 見つからない場合はnullを返します。
-	 * 
+	 * 指定された名前のペットを返します。 見つからない場合はnullを返します。
 	 * @param name 検索するペットの名前
 	 * @param ignoreNew 新規ペット（まだ保存されていないペット）を無視するかどうか
 	 * @return 指定された名前のペット、またはnull
@@ -206,7 +190,6 @@ public class Owner extends Person {
 
 	/**
 	 * 指定されたペットに診察記録を追加します。
-	 * 
 	 * @param petId ペットの識別子、null不可
 	 * @param visit 追加する診察記録、null不可
 	 * @throws IllegalArgumentException petIdまたはvisitがnullの場合、または無効なペットIDの場合

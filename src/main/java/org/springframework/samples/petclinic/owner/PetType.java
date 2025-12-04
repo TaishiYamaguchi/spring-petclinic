@@ -21,9 +21,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 /**
- * ペットの種類を表すドメインオブジェクト。
- * 例: 猫、犬、ハムスターなど。
- * 
+ * ペットの種類を表すドメインオブジェクト。 例: 猫、犬、ハムスターなど。
+ *
  * @author Juergen Hoeller
  */
 @Entity
