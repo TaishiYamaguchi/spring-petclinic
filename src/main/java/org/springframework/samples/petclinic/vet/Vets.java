@@ -22,8 +22,8 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 /**
- * Simple domain object representing a list of veterinarians. Mostly here to be used for
- * the 'vets' {@link org.springframework.web.servlet.view.xml.MarshallingView}.
+ * 獣医のリストを表すシンプルなドメインオブジェクト。
+ * 主にXML/JSONマーシャリングビューで使用されます。
  *
  * @author Arjen Poutsma
  */
@@ -32,6 +32,12 @@ public class Vets {
 
 	private List<Vet> vets;
 
+	/**
+	 * 獣医のリストを取得します。
+	 * 初期化されていない場合は新しいArrayListを作成します。
+	 * 
+	 * @return 獣医のリスト
+	 */
 	@XmlElement
 	public List<Vet> getVetList() {
 		if (vets == null) {

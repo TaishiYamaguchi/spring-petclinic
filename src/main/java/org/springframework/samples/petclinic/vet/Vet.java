@@ -33,7 +33,8 @@ import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlElement;
 
 /**
- * Simple JavaBean domain object representing a veterinarian.
+ * 獣医を表すドメインオブジェクト。
+ * 名前と複数の専門分野を保持します。
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -49,6 +50,12 @@ public class Vet extends Person {
 			inverseJoinColumns = @JoinColumn(name = "specialty_id"))
 	private Set<Specialty> specialties;
 
+	/**
+	 * 専門分野の内部セットを取得します。
+	 * 初期化されていない場合は新しいHashSetを作成します。
+	 * 
+	 * @return 専門分野のセット
+	 */
 	protected Set<Specialty> getSpecialtiesInternal() {
 		if (this.specialties == null) {
 			this.specialties = new HashSet<>();
@@ -56,6 +63,11 @@ public class Vet extends Person {
 		return this.specialties;
 	}
 
+	/**
+	 * この獣医の専門分野一覧を名前順にソートして取得します。
+	 * 
+	 * @return ソートされた専門分野のリスト
+	 */
 	@XmlElement
 	public List<Specialty> getSpecialties() {
 		return getSpecialtiesInternal().stream()
@@ -63,10 +75,20 @@ public class Vet extends Person {
 			.collect(Collectors.toList());
 	}
 
+	/**
+	 * この獣医が持つ専門分野の数を取得します。
+	 * 
+	 * @return 専門分野の数
+	 */
 	public int getNrOfSpecialties() {
 		return getSpecialtiesInternal().size();
 	}
 
+	/**
+	 * この獣医に専門分野を追加します。
+	 * 
+	 * @param specialty 追加する専門分野
+	 */
 	public void addSpecialty(Specialty specialty) {
 		getSpecialtiesInternal().add(specialty);
 	}

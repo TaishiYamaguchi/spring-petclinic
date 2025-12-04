@@ -24,27 +24,33 @@ import org.springframework.context.annotation.Configuration;
 import javax.cache.configuration.MutableConfiguration;
 
 /**
- * Cache configuration intended for caches providing the JCache API. This configuration
- * creates the used cache for the application and enables statistics that become
- * accessible via JMX.
+ * JCache APIを提供するキャッシュの設定。
+ * アプリケーションで使用するキャッシュを作成し、
+ * JMX経由でアクセス可能な統計情報を有効化します。
  */
 @Configuration(proxyBeanMethods = false)
 @EnableCaching
 class CacheConfiguration {
 
+	/**
+	 * 獣医情報用のキャッシュを作成するカスタマイザー。
+	 * 
+	 * @return JCacheマネージャーカスタマイザー
+	 */
 	@Bean
 	public JCacheManagerCustomizer petclinicCacheConfigurationCustomizer() {
 		return cm -> cm.createCache("vets", cacheConfiguration());
 	}
 
 	/**
-	 * Create a simple configuration that enable statistics via the JCache programmatic
-	 * configuration API.
+	 * JCacheプログラム設定API経由で統計情報を有効化するシンプルな設定を作成します。
 	 * <p>
-	 * Within the configuration object that is provided by the JCache API standard, there
-	 * is only a very limited set of configuration options. The really relevant
-	 * configuration options (like the size limit) must be set via a configuration
-	 * mechanism that is provided by the selected JCache implementation.
+	 * JCache API標準によって提供される設定オブジェクト内では、
+	 * 非常に限られた設定オプションしかありません。
+	 * 本当に関連する設定オプション（サイズ制限など）は、
+	 * 選択したJCache実装が提供する設定メカニズム経由で設定する必要があります。
+	 * 
+	 * @return キャッシュ設定
 	 */
 	private javax.cache.configuration.Configuration<Object, Object> cacheConfiguration() {
 		return new MutableConfiguration<>().setStatisticsEnabled(true);

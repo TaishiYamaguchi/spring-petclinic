@@ -25,10 +25,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 
 /**
- * Repository class for <code>Vet</code> domain objects All method names are compliant
- * with Spring Data naming conventions so this interface can easily be extended for Spring
- * Data. See:
- * https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
+ * Vetドメインオブジェクトのリポジトリインターフェース。
+ * すべてのメソッド名はSpring Dataの命名規則に準拠しているため、
+ * このインターフェースはSpring Dataで簡単に拡張できます。
+ * 参照: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -38,18 +38,23 @@ import java.util.Collection;
 public interface VetRepository extends Repository<Vet, Integer> {
 
 	/**
-	 * Retrieve all <code>Vet</code>s from the data store.
-	 * @return a <code>Collection</code> of <code>Vet</code>s
+	 * すべての獣医をデータストアから取得します。
+	 * 結果はキャッシュされます。
+	 * 
+	 * @return 獣医のコレクション
+	 * @throws DataAccessException データアクセスエラーが発生した場合
 	 */
 	@Transactional(readOnly = true)
 	@Cacheable("vets")
 	Collection<Vet> findAll() throws DataAccessException;
 
 	/**
-	 * Retrieve all <code>Vet</code>s from data store in Pages
-	 * @param pageable
-	 * @return
-	 * @throws DataAccessException
+	 * すべての獣医をページングしてデータストアから取得します。
+	 * 結果はキャッシュされます。
+	 * 
+	 * @param pageable ページング情報
+	 * @return 獣医のページ
+	 * @throws DataAccessException データアクセスエラーが発生した場合
 	 */
 	@Transactional(readOnly = true)
 	@Cacheable("vets")

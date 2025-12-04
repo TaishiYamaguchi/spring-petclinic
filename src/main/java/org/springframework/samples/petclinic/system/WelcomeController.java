@@ -22,6 +22,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 class WelcomeController {
 
+	/**
+	 * アプリケーションのウェルカムページを表示します。
+	 * 
+	 * @return ウェルカムページのビュー名
+	 */
 	@GetMapping("/")
 	public String welcome() {
 		return "welcome";

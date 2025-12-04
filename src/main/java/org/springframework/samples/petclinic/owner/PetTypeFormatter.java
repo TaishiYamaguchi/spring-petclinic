@@ -24,9 +24,9 @@ import java.util.Locale;
 import java.util.Objects;
 
 /**
- * Instructs Spring MVC on how to parse and print elements of type 'PetType'. Starting
- * from Spring 3.0, Formatters have come as an improvement in comparison to legacy
- * PropertyEditors. See the following links for more details: - The Spring ref doc:
+ * PetType型の要素を解析および出力する方法をSpring MVCに指示します。
+ * Spring 3.0以降、FormatterはレガシーPropertyEditorと比較して改善されました。
+ * 詳細は以下を参照:
  * https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#format
  *
  * @author Mark Fisher
@@ -42,12 +42,27 @@ public class PetTypeFormatter implements Formatter<PetType> {
 		this.types = types;
 	}
 
+	/**
+	 * PetTypeを文字列表現に変換します。
+	 * 
+	 * @param petType 変換するペットの種類
+	 * @param locale ロケール
+	 * @return ペットの種類の名前、または"<null>"
+	 */
 	@Override
 	public String print(PetType petType, Locale locale) {
 		String name = petType.getName();
 		return (name != null) ? name : "<null>";
 	}
 
+	/**
+	 * 文字列をPetTypeオブジェクトに解析します。
+	 * 
+	 * @param text 解析する文字列
+	 * @param locale ロケール
+	 * @return 一致するPetType
+	 * @throws ParseException 指定された名前のペットの種類が見つからない場合
+	 */
 	@Override
 	public PetType parse(String text, Locale locale) throws ParseException {
 		Collection<PetType> findPetTypes = this.types.findPetTypes();

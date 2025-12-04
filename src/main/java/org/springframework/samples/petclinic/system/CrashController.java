@@ -28,6 +28,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 class CrashController {
 
+	/**
+	 * 例外がスローされたときの動作をデモンストレーションするためのエンドポイントです。
+	 * 意図的にRuntimeExceptionをスローして、エラーハンドリングをテストします。
+	 * 
+	 * @return このメソッドは常に例外をスローするため、戻り値はありません
+	 * @throws RuntimeException エラーハンドリングをデモンストレーションするための例外
+	 */
 	@GetMapping("/oups")
 	public String triggerException() {
 		throw new RuntimeException(

@@ -23,8 +23,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 /**
- * Simple JavaBean domain object with an id property. Used as a base class for objects
- * needing this property.
+ * IDプロパティを持つシンプルなドメインオブジェクト。
+ * IDが必要なオブジェクトの基底クラスとして使用されます。
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -36,14 +36,29 @@ public class BaseEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	/**
+	 * エンティティのIDを取得します。
+	 * 
+	 * @return エンティティのID
+	 */
 	public Integer getId() {
 		return id;
 	}
 
+	/**
+	 * エンティティのIDを設定します。
+	 * 
+	 * @param id エンティティのID
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	/**
+	 * このエンティティが新規（まだ永続化されていない）かどうかを判定します。
+	 * 
+	 * @return IDがnullの場合はtrue、それ以外はfalse
+	 */
 	public boolean isNew() {
 		return this.id == null;
 	}

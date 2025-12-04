@@ -20,7 +20,8 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotBlank;
 
 /**
- * Simple JavaBean domain object representing an person.
+ * 人物を表すシンプルなドメインオブジェクト。
+ * 名前（姓と名）を保持します。
  *
  * @author Ken Krebs
  */
@@ -35,18 +36,38 @@ public class Person extends BaseEntity {
 	@NotBlank
 	private String lastName;
 
+	/**
+	 * 名を取得します。
+	 * 
+	 * @return 名
+	 */
 	public String getFirstName() {
 		return this.firstName;
 	}
 
+	/**
+	 * 名を設定します。
+	 * 
+	 * @param firstName 名
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+	/**
+	 * 姓を取得します。
+	 * 
+	 * @return 姓
+	 */
 	public String getLastName() {
 		return this.lastName;
 	}
 
+	/**
+	 * 姓を設定します。
+	 * 
+	 * @param lastName 姓
+	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}

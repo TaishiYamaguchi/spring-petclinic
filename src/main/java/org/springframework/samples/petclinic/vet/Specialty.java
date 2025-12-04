@@ -21,7 +21,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 /**
- * Models a {@link Vet Vet's} specialty (for example, dentistry).
+ * 獣医の専門分野を表すドメインオブジェクト。
+ * 例: 歯科、外科、内科など。
  *
  * @author Juergen Hoeller
  */

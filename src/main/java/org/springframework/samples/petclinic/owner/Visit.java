@@ -26,7 +26,8 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 /**
- * Simple JavaBean domain object representing a visit.
+ * ペットの診察記録を表すドメインオブジェクト。
+ * 診察日と診察内容の説明を保持します。
  *
  * @author Ken Krebs
  * @author Dave Syer
@@ -43,24 +44,44 @@ public class Visit extends BaseEntity {
 	private String description;
 
 	/**
-	 * Creates a new instance of Visit for the current date
+	 * 現在の日付で診察記録の新しいインスタンスを作成します。
 	 */
 	public Visit() {
 		this.date = LocalDate.now();
 	}
 
+	/**
+	 * 診察日を取得します。
+	 * 
+	 * @return 診察日
+	 */
 	public LocalDate getDate() {
 		return this.date;
 	}
 
+	/**
+	 * 診察日を設定します。
+	 * 
+	 * @param date 診察日
+	 */
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
+	/**
+	 * 診察内容の説明を取得します。
+	 * 
+	 * @return 診察内容の説明
+	 */
 	public String getDescription() {
 		return this.description;
 	}
 
+	/**
+	 * 診察内容の説明を設定します。
+	 * 
+	 * @param description 診察内容の説明
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}

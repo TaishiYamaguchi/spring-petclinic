@@ -47,17 +47,27 @@ class VisitController {
 		this.owners = owners;
 	}
 
+	/**
+	 * データバインダーの設定を行います。
+	 * セキュリティ上の理由から、idフィールドのバインディングを禁止します。
+	 * 
+	 * @param dataBinder Webデータバインダー
+	 */
 	@InitBinder
 	public void setAllowedFields(WebDataBinder dataBinder) {
 		dataBinder.setDisallowedFields("id");
 	}
 
 	/**
-	 * Called before each and every @RequestMapping annotated method. 2 goals: - Make sure
-	 * we always have fresh data - Since we do not use the session scope, make sure that
-	 * Pet object always has an id (Even though id is not part of the form fields)
-	 * @param petId
-	 * @return Pet
+	 * 各@RequestMappingメソッドの前に呼ばれます。
+	 * 目的: 常に最新のデータを保証し、セッションスコープを使用しないため
+	 * Petオブジェクトが必ずidを持つことを保証します。
+	 * 
+	 * @param ownerId オーナーID
+	 * @param petId ペットID
+	 * @param model ビューに渡すモデルデータ
+	 * @return 新しいVisitオブジェクト
+	 * @throws IllegalArgumentException オーナーまたはペットが見つからない場合
 	 */
 	@ModelAttribute("visit")
 	public Visit loadPetWithVisit(@PathVariable("ownerId") int ownerId, @PathVariable("petId") int petId,
@@ -79,15 +89,28 @@ class VisitController {
 		return visit;
 	}
 
-	// Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is
-	// called
+	/**
+	 * 新しい診察記録の作成フォームを表示します。
+	 * 注: Spring MVCはloadPetWithVisit(...)メソッドを先に呼び出します。
+	 * 
+	 * @return 診察記録作成・更新フォームのビュー名
+	 */
 	@GetMapping("/owners/{ownerId}/pets/{petId}/visits/new")
 	public String initNewVisitForm() {
 		return "pets/createOrUpdateVisitForm";
 	}
 
-	// Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is
-	// called
+	/**
+	 * 新しい診察記録の作成フォームの送信を処理します。
+	 * 注: Spring MVCはloadPetWithVisit(...)メソッドを先に呼び出します。
+	 * 
+	 * @param owner オーナーオブジェクト
+	 * @param petId ペットID
+	 * @param visit 登録する診察記録
+	 * @param result バリデーション結果
+	 * @param redirectAttributes フラッシュメッセージを渡すためのリダイレクト属性
+	 * @return 処理後にリダイレクトするビュー名
+	 */
 	@PostMapping("/owners/{ownerId}/pets/{petId}/visits/new")
 	public String processNewVisitForm(@ModelAttribute Owner owner, @PathVariable int petId, @Valid Visit visit,
 			BindingResult result, RedirectAttributes redirectAttributes) {

@@ -11,11 +11,11 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import java.util.Locale;
 
 /**
- * Configures internationalization (i18n) support for the application.
+ * アプリケーションの国際化（i18n）サポートを設定します。
  *
  * <p>
- * Handles loading language-specific messages, tracking the user's language, and allowing
- * language changes via the URL parameter (e.g., <code>?lang=de</code>).
+ * 言語固有のメッセージの読み込み、ユーザーの言語追跡、
+ * URLパラメータ経由の言語変更（例: <code>?lang=de</code>）を処理します。
  * </p>
  *
  * @author Anuj Ashok Potdar
@@ -25,9 +25,10 @@ import java.util.Locale;
 public class WebConfiguration implements WebMvcConfigurer {
 
 	/**
-	 * Uses session storage to remember the user’s language setting across requests.
-	 * Defaults to English if nothing is specified.
-	 * @return session-based {@link LocaleResolver}
+	 * リクエスト間でユーザーの言語設定を記憶するためにセッションストレージを使用します。
+	 * 何も指定されていない場合は英語がデフォルトになります。
+	 * 
+	 * @return セッションベースのLocaleResolver
 	 */
 	@Bean
 	public LocaleResolver localeResolver() {
@@ -37,9 +38,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 	}
 
 	/**
-	 * Allows the app to switch languages using a URL parameter like
-	 * <code>?lang=es</code>.
-	 * @return a {@link LocaleChangeInterceptor} that handles the change
+	 * <code>?lang=es</code>のようなURLパラメータを使用して言語を切り替えることを可能にします。
+	 * 
+	 * @return 言語変更を処理するLocaleChangeInterceptor
 	 */
 	@Bean
 	public LocaleChangeInterceptor localeChangeInterceptor() {
@@ -49,8 +50,9 @@ public class WebConfiguration implements WebMvcConfigurer {
 	}
 
 	/**
-	 * Registers the locale change interceptor so it can run on each request.
-	 * @param registry where interceptors are added
+	 * 各リクエストで実行されるようにロケール変更インターセプターを登録します。
+	 * 
+	 * @param registry インターセプターを追加するレジストリ
 	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
